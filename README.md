@@ -1,7 +1,5 @@
 # HireHelper - Professional Task Ecosystem 🚀
 
-![HireHelper Dashboard]([file:///C:\Users\NIKITA BALWADA\Downloads\hero.png])
-
 ## 🌐 Live Deployment
 - **Live Website (Frontend)**: [https://hire-helper-frontend.vercel.app](https://hire-helper-frontend.vercel.app)
 - **API Base URL (Backend)**: [https://hirehelper-backend-desq.onrender.com/api/](https://hirehelper-backend-desq.onrender.com/api/)

@@ -5,11 +5,10 @@
 ## 🌐 Live Deployment
 - **Live Website (Frontend)**: [https://hire-helper-frontend.vercel.app](https://hire-helper-frontend.vercel.app)
 - **API Base URL (Backend)**: [https://hirehelper-backend-desq.onrender.com/api/](https://hirehelper-backend-desq.onrender.com/api/)
-- **Admin Panel**: [https://hirehelper-backend-desq.onrender.com/admin/](https://hirehelper-backend-desq.onrender.com/admin/)
 
 ## 📂 Source Code
 - **Frontend Repository**: [HireHelper_Frontend](https://github.com/nikitaB2005/HireHelper_Frontend)
-- **Backend Repository**: (Add your backend repository link here)
+- **Backend Repository**: [HireHelper_Backend](https://github.com/nikitaB2005/HireHelper_Backend)
 
 ## Overview
 **HireHelper** is a state-of-the-art task management and hiring platform designed to bridge the gap between service seekers (Hirers) and task fulfillers (Helpers). Built with a modern **Django + Angular** stack, it features a premium "Dark Glassmorphism" UI, real-time notifications, and a robust rating/review system.
@@ -114,7 +113,7 @@ HireHelper/
 ---
 
 ## 👨‍💻 Author
-**Project Lead:** (Your Name)
+**Project Lead:** Nikita
 **Context:** B.Tech Computer Science & Engineering (3rd Year)
 
 > [!NOTE]

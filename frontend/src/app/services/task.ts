@@ -1,11 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private readonly baseUrl = "http://127.0.0.1:8000/api/tasks/";
+  private readonly baseUrl = `${environment.apiUrl}tasks/`;
   private http = inject(HttpClient);
 
   getFeed() {

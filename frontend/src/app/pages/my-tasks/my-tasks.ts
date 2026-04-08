@@ -202,12 +202,14 @@ export class MyTasks implements OnInit {
     if (this.editImageFile || this.editImagePreview === null) {
       payload = new FormData();
       payload.append('title', this.editingTask.title);
-      payload.append('description', this.editingTask.description);
-      payload.append('city', this.editingTask.city);
-      payload.append('location', this.editingTask.location);
+      payload.append('description', this.editingTask.description || '');
+      payload.append('city', this.editingTask.city || '');
+      payload.append('location', this.editingTask.location || '');
       payload.append('start_time', this.editingTask.start_time);
       payload.append('status', this.editingTask.status);
-      if (this.editingTask.end_time) payload.append('end_time', this.editingTask.end_time);
+      if (this.editingTask.end_time) {
+        payload.append('end_time', this.editingTask.end_time);
+      }
       
       if (this.editImageFile) {
         payload.append('image', this.editImageFile);
@@ -215,7 +217,19 @@ export class MyTasks implements OnInit {
         payload.append('image', ''); 
       }
     } else {
-      payload = { ...this.editingTask };
+      // Clean the object payload for non-image updates to avoid sending read-only fields
+      // and strings for the image field which causes a 400 Bad Request error.
+      const { 
+        id, 
+        created_by, 
+        created_by_id, 
+        created_by_rating, 
+        created_at, 
+        image, 
+        ...cleanTask 
+      } = this.editingTask;
+      
+      payload = cleanTask;
     }
 
     this.taskService.updateTask(this.originalTaskRef.id, payload).subscribe({
@@ -226,8 +240,19 @@ export class MyTasks implements OnInit {
         this.closeEditModal();
       },
       error: (error) => {
-        const message = error?.error?.error || 'Failed to update task.';
-        this.toast.error(message);
+        // Log error details for debugging if needed, but show user-friendly message
+        console.error('Task update failed:', error);
+        const backendErrors = error?.error;
+        let errorMessage = 'Failed to update task.';
+        
+        if (typeof backendErrors === 'object' && backendErrors !== null) {
+            // DRF usually returns errors as { field: [error] } or { non_field_errors: [error] }
+            const firstErrorKey = Object.keys(backendErrors)[0];
+            const errorContent = backendErrors[firstErrorKey];
+            errorMessage = Array.isArray(errorContent) ? errorContent[0] : (backendErrors.error || errorMessage);
+        }
+        
+        this.toast.error(errorMessage);
       }
     });
   }

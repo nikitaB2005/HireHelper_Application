@@ -23,8 +23,8 @@ def create_task(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def task_feed(request):
-    """Fetch all open tasks for the global feed."""
-    tasks = Task.objects.filter(status="open")
+    """Fetch all open tasks for the global feed, excluding our own."""
+    tasks = Task.objects.filter(status="open").exclude(created_by=request.user)
     serializer = TaskSerializer(tasks, many=True, context={"request": request})
     return Response(serializer.data)
 

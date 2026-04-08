@@ -14,9 +14,10 @@ import { Settings } from './pages/settings/settings';
 import { NotificationsComponent } from './pages/notifications/notifications';
 import { authGuard } from './guards/auth-guard';
 import { SidebarLayoutComponent } from './components/sidebar-layout/sidebar-layout';
+import { LandingComponent } from './pages/landing/landing';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: LandingComponent, pathMatch: 'full' },
 
   { path: 'login', component: Login },
   { path: 'register', component: RegisterComponent },

@@ -2,6 +2,15 @@
 
 ![HireHelper Dashboard](file:///C:/Users/NIKITA%20BALWADA/.gemini/antigravity/brain/10048f5d-b1d9-44c0-af4a-cb7074be5bdb/hirehelper_dashboard_mockup_1775241457585.png)
 
+## 🌐 Live Deployment
+- **Live Website (Frontend)**: [https://hire-helper-frontend.vercel.app](https://hire-helper-frontend.vercel.app)
+- **API Base URL (Backend)**: [https://hirehelper-backend-desq.onrender.com/api/](https://hirehelper-backend-desq.onrender.com/api/)
+- **Admin Panel**: [https://hirehelper-backend-desq.onrender.com/admin/](https://hirehelper-backend-desq.onrender.com/admin/)
+
+## 📂 Source Code
+- **Frontend Repository**: [HireHelper_Frontend](https://github.com/nikitaB2005/HireHelper_Frontend)
+- **Backend Repository**: (Add your backend repository link here)
+
 ## Overview
 **HireHelper** is a state-of-the-art task management and hiring platform designed to bridge the gap between service seekers (Hirers) and task fulfillers (Helpers). Built with a modern **Django + Angular** stack, it features a premium "Dark Glassmorphism" UI, real-time notifications, and a robust rating/review system.
 

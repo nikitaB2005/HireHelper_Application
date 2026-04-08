@@ -1,12 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
   // Correct pluralized base URL matching backend/backend/urls.py
-  private readonly baseUrl = 'http://127.0.0.1:8000/api/requests/';
+  private readonly baseUrl = `${environment.apiUrl}requests/`;
   private http = inject(HttpClient);
 
   sendRequest(taskId: number, message: string) {

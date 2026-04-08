@@ -39,6 +39,11 @@ export class Feed implements OnInit {
   profileUserId: number | null = null;
   profileUserName = '';
   profileUserRating: number | string | null = null;
+  
+  get isHirer(): boolean {
+    const role = localStorage.getItem('userRole') || 'helper';
+    return role.toLowerCase() === 'hirer';
+  }
 
   constructor(
     private taskService: TaskService,

@@ -50,12 +50,19 @@ class TaskSerializer(serializers.ModelSerializer):
     def validate_start_time(self, value):
         from django.utils import timezone
         # Check only if the date is in the past, allowing any time today
+        # Skip validation if we're updating an existing task and the value hasn't changed from what's stored
+        if self.instance and self.instance.start_time == value:
+            return value
+
         if value.date() < timezone.now().date():
             raise serializers.ValidationError("Start date cannot be in the past.")
         return value
 
     def validate_end_time(self, value):
         from django.utils import timezone
+        if self.instance and self.instance.end_time == value:
+            return value
+
         if value and value.date() < timezone.now().date():
             raise serializers.ValidationError("End date cannot be in the past.")
         return value
@@ -70,13 +77,14 @@ class TaskSerializer(serializers.ModelSerializer):
         return data
 
     def update(self, instance, validated_data):
-        image = validated_data.get('image', None)
-        
-        # explicitly handle frontend sending an empty string or null as a deletion signal
-        if image in ["", None]:
-            if instance.image:
-                instance.image.delete(save=False)
-            instance.image = None
-            validated_data.pop('image', None)  # strip key to prevent DRF from panicking
+        # Only handle image deletion if 'image' is explicitly provided in the request
+        if 'image' in validated_data:
+            image = validated_data['image']
+            # explicitly handle frontend sending an empty string or null as a deletion signal
+            if image in ["", None]:
+                if instance.image:
+                    instance.image.delete(save=False)
+                instance.image = None
+                validated_data.pop('image', None)  # strip key to prevent DRF from panicking
             
         return super().update(instance, validated_data)

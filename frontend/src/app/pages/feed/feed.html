@@ -138,11 +138,12 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid gap-4" [ngClass]="isHirer ? 'grid-cols-1' : 'grid-cols-2'">
             <button type="button" (click)="viewDetails(task)" class="h-12 rounded-xl border border-white/10 text-white text-sm font-bold hover:bg-white/5 transition-all">
               Details
             </button>
             <button
+              *ngIf="!isHirer"
               type="button"
               (click)="handleTaskRequest(task)"
               [disabled]="task.status !== 'open' || hasRequested(task.id)"
@@ -198,7 +199,7 @@
         </section>
       </div>
 
-      <section>
+      <section *ngIf="!isHirer">
         <label class="text-xs font-bold uppercase tracking-widest text-amber-500 mb-4 block">Message to Hirer</label>
         <textarea
           rows="3"
@@ -210,8 +211,11 @@
     </div>
 
     <div class="p-8 border-t border-white/5 flex gap-4 justify-end bg-black/20">
-      <button (click)="closeModal()" class="px-6 h-12 rounded-xl text-slate-400 font-bold hover:text-white transition-all">Cancel</button>
+      <button (click)="closeModal()" class="px-6 h-12 rounded-xl text-slate-400 font-bold hover:text-white transition-all">
+        {{ isHirer ? 'Close' : 'Cancel' }}
+      </button>
       <button
+        *ngIf="!isHirer"
         (click)="handleTaskRequest(selectedTaskDetail); closeModal()"
         [disabled]="selectedTaskDetail.status !== 'open' || hasRequested(selectedTaskDetail.id)"
         class="px-8 h-12 rounded-xl bg-amber-600 text-white font-black hover:bg-amber-500 disabled:opacity-30 shadow-xl shadow-amber-900/20 transition-all">

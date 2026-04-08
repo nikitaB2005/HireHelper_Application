@@ -1,12 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
   // Reviews are handled by the tasks app in backend/tasks/urls.py
-  private readonly baseUrl = 'http://127.0.0.1:8000/api/tasks/';
+  private readonly baseUrl = `${environment.apiUrl}tasks/`;
   private http = inject(HttpClient);
 
   submitReview(taskId: number, rating: number, comment: string) {

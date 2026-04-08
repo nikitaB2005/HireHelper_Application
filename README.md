@@ -1,6 +1,6 @@
 # HireHelper - Professional Task Ecosystem 🚀
 
-![HireHelper Dashboard]([file:///C:/Users/NIKITA%20BALWADA/.gemini/antigravity/brain/10048f5d-b1d9-44c0-af4a-cb7074be5bdb/hirehelper_dashboard_mockup_1775241457585.png)](https://hire-helper-frontend.vercel.app/hero.png)
+![HireHelper Dashboard]([file:///C:/Users/NIKITA%20BALWADA/.gemini/antigravity/brain/10048f5d-b1d9-44c0-af4a-cb7074be5bdb/hirehelper_dashboard_mockup_1775241457585.png)]"C:\Users\NIKITA BALWADA\Downloads\hero.png"
 
 ## 🌐 Live Deployment
 - **Live Website (Frontend)**: [https://hire-helper-frontend.vercel.app](https://hire-helper-frontend.vercel.app)
